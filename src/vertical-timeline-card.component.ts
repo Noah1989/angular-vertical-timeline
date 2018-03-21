@@ -1,14 +1,15 @@
-import {Component, Input, OnInit, HostBinding} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, HostBinding} from '@angular/core';
 
 @Component({
     selector: 'vertical-timeline-card',
     templateUrl: 'vertical-timeline-card.html',
 })
-export class VerticalTimelineCardComponent implements OnInit {
+export class VerticalTimelineCardComponent implements OnInit, OnChanges {
 
     @Input() public dateValue: Date;
     @Input() public timeString: string;
     @Input() public color: string;
+    @Input() public svgIcon: string;
     @HostBinding('class.timeline-item') public isATimelineItem: boolean = false;
     public textColor: string;
 
@@ -17,7 +18,9 @@ export class VerticalTimelineCardComponent implements OnInit {
         if (this.dateValue === null || this.dateValue === undefined) {
             this.dateValue = new Date();
         }
+    }
 
+    public ngOnChanges() {
         if (this.color === null || this.color === undefined) {
             this.color = '#3F51B5';
         }

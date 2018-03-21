@@ -1,6 +1,7 @@
 <div class="timeline-img" [style.background]="color">
-  <p *ngIf="!timeString || timeString === ''" [style.color]="textColor">{{dateValue | date: "HH:mm"}}</p>
+  <p *ngIf="(!svgIcon || svgIcon === '') && (!timeString || timeString === '')" [style.color]="textColor">{{dateValue | date: "HH:mm"}}</p>
   <p *ngIf="timeString && timeString != ''" [style.color]="textColor">{{timeString}}</p>
+  <mat-icon *ngIf="svgIcon && svgIcon != ''" svgIcon="{{svgIcon}}"></mat-icon>
 </div>
 
 <div class="timeline-content">

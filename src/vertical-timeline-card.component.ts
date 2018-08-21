@@ -10,6 +10,7 @@ export class VerticalTimelineCardComponent implements OnInit, OnChanges {
     @Input() public timeString: string;
     @Input() public color: string;
     @Input() public svgIcon: string;
+    @Input() public disabled: boolean = false;
     @HostBinding('class.timeline-item') public isATimelineItem: boolean = false;
     public textColor: string;
 

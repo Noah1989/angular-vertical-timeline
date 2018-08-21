@@ -1,13 +1,17 @@
-<div class="timeline-img" [style.background]="color">
-  <p *ngIf="(!svgIcon || svgIcon === '') && (!timeString || timeString === '')" [style.color]="textColor">{{dateValue | date: "HH:mm"}}</p>
-  <p *ngIf="timeString && timeString != ''" [style.color]="textColor">{{timeString}}</p>
-  <mat-icon *ngIf="svgIcon && svgIcon != ''" svgIcon="{{svgIcon}}" [style.color]="textColor"></mat-icon>
-</div>
-
-<div class="timeline-content">
-  <div class="date" [style.background]="color">
-      <p [style.color]="textColor">{{dateValue | date:"dd MMMM yyyy"}}</p>
+<div>
+  <div class="timeline-img" [style.background]="color">
+    <p *ngIf="(!svgIcon || svgIcon === '') && (!timeString || timeString === '')" [style.color]="textColor">{{dateValue | date: "HH:mm"}}</p>
+    <p *ngIf="timeString && timeString != ''" [style.color]="textColor">{{timeString}}</p>
+    <mat-icon *ngIf="svgIcon && svgIcon != ''" svgIcon="{{svgIcon}}" [style.color]="textColor"></mat-icon>
   </div>
 
-  <div class="inner-content"><ng-content></ng-content></div>
+  <div class="timeline-content" [ngClass]="{'disabled-element': disabled}">
+    <div class="date" [style.background]="color">
+      <p [style.color]="textColor">{{dateValue | date:"dd MMMM yyyy"}}</p>
+    </div>
+
+    <div class="inner-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
 </div>
